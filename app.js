@@ -29,7 +29,7 @@ http.createServer((req, res) => {
   const queryURL = new URL(req.url, 'http://127.0.0.1:3000/')
   const pathname = queryURL.pathname
 
-  if (pathname === '/') {
+  if (pathname === '/') {            // 首页
     fs.readFile('./views/index.html', (err, data) => {
       if (err) {
         return res.end('404 Not Found.')
@@ -38,14 +38,14 @@ http.createServer((req, res) => {
         comments
       }))
     })
-  } else if (pathname === '/post') {
+  } else if (pathname === '/post') {           // 跳转到发表评论页面
     fs.readFile('./views/post.html', (err, data) => {
       if (err) {
         return res.end('404 Not Found.')
       }
       res.end(data)
     })
-  } else if (pathname === '/comment') {
+  } else if (pathname === '/comment') {         // 发表评论
     const obj = {}
     const nowTime = new Date()
     queryURL.searchParams.forEach((val, key) => {
@@ -56,7 +56,7 @@ http.createServer((req, res) => {
     res.statusCode = 302
     res.setHeader('Location', '/')   // 重定向
     res.end()
-  } else if (pathname.startsWith('/public/') === true) {
+  } else if (pathname.startsWith('/public/') === true) {          // 获取 bootsrap 文件
     fs.readFile('.' + req.url, (err, data) => {
       if (err) {
         return res.end('404 Not Found.')
@@ -64,7 +64,7 @@ http.createServer((req, res) => {
       res.end(data)
     })
   } else {
-    fs.readFile('./views/404.html', (err, data) => {
+    fs.readFile('./views/404.html', (err, data) => {        // 没有对应页面
       res.end(data)
     })
   }
