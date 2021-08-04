@@ -4,9 +4,9 @@
 .
 ├── public               静态文件
 ├── views                html 页面
-	  ├── index.html
-	  ├── post.html
-	  └── 404.html
+    ├── index.html
+    ├── post.html
+    └── 404.html
 └── app.js               项目启动文件
 ```
 
